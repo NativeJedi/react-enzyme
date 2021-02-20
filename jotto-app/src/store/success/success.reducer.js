@@ -1,8 +1,6 @@
 import { CORRECT_GUESS } from './success.types';
 
-export const INITIAL_STATE = {
-  isSuccess: false,
-};
+export const INITIAL_STATE = false;
 
 const successReducer = (
   state = INITIAL_STATE,
@@ -10,10 +8,7 @@ const successReducer = (
 ) => {
   switch (action.type) {
     case CORRECT_GUESS:
-      return {
-        ...state,
-        isSuccess: true,
-      };
+      return true;
     default:
       return INITIAL_STATE;
   }

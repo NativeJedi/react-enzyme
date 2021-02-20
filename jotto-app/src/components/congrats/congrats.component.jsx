@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Congrats = ({ isSuccess }) => {
+  if (!isSuccess) {
+    return null;
+  }
+
   return (
-    <div data-test="component-congrats" className="alert alert-success">
-      <span data-test="congrats-message">{
-        isSuccess
-          ? 'Success!'
-          : ''
-      }</span>
-    </div>
+    <div data-test="component-congrats" className="alert alert-success">Success</div>
   );
 };
 

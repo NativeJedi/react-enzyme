@@ -1,5 +1,7 @@
+import { storeFactory } from '../../test/utils';
 import { correctGuess } from './success.actions';
 import successReducer, { INITIAL_STATE } from './success.reducer';
+import { selectIsSuccess } from './success.selectors';
 import { CORRECT_GUESS } from './success.types';
 
 describe('correctGuess action', () => {
@@ -20,9 +22,15 @@ describe('successReducer', () => {
   test('returns valid state after correctGuess action', () => {
     const newState = successReducer(undefined, correctGuess());
 
-    expect(newState).toEqual({
-      ...INITIAL_STATE,
-      isSuccess: true,
-    });
+    expect(newState).toEqual(true);
   });
 });
+
+describe('successSelector', () => {
+  test('returns correct initial state', () => {
+    const store = storeFactory({ success: INITIAL_STATE });
+    const success = selectIsSuccess(store.getState());
+
+    expect(success).toBe(INITIAL_STATE);
+  });
+})
