@@ -1,1 +1,2 @@
 export const GUESS_WORD = 'GUESS_WORD';
+export const SET_GUESSED_WORDS = 'SET_GUESSED_WORDS';

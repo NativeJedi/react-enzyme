@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { GuessedWordsPropType } from '../../types';
 
 const GuessedWords = ({ guessedWords }) => {
   const guessedWordsRows = guessedWords.map(({ word, letterMatchCount }, index) => (
@@ -31,12 +31,7 @@ const GuessedWords = ({ guessedWords }) => {
 };
 
 GuessedWords.propTypes = {
-  guessedWords: PropTypes.arrayOf(
-    PropTypes.shape({
-      word: PropTypes.string.isRequired,
-      letterMatchCount: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  guessedWords: GuessedWordsPropType.isRequired,
 };
 
 export default GuessedWords;

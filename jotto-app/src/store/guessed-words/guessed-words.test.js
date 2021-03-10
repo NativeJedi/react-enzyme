@@ -1,5 +1,5 @@
-import { storeFactory } from '../../test/utils';
-import { guessWord } from './guessed-words.actions';
+import { mockStore, storeFactory } from '../../test/utils';
+import { guessWord, setGuessedWords } from './guessed-words.actions';
 
 const secretWord = 'party';
 const unSuccessWord = 'train';
@@ -107,5 +107,31 @@ describe('guessWord action dispatcher', () => {
 
       expect(newState).toEqual(expectedState);
     });
+  });
+});
+
+describe('setGuessedWords action creator', () => {
+  test('add word when no guessed words', () => {
+    const newGuessedWords = [{ word: 'train', letterMatchCount: 3 }];
+    const store = storeFactory({ guessedWords: [] });
+
+    store.dispatch(setGuessedWords(newGuessedWords));
+
+    const { guessedWords } = store.getState();
+
+    expect(guessedWords).toEqual(newGuessedWords);
+  });
+
+  test('add word when some guessed words', () => {
+    const newGuessedWords = [];
+    const store = storeFactory({
+      guessedWords: [{ word: 'party', letterMatchCount: 5 }],
+    });
+
+    store.dispatch(setGuessedWords(newGuessedWords));
+
+    const { guessedWords } = store.getState();
+
+    expect(guessedWords).toEqual(newGuessedWords);
   });
 });

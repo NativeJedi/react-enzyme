@@ -3,13 +3,13 @@ import App, { UnconnectedApp } from './App';
 import { shallow, mount } from 'enzyme';
 import { mockStore } from './test/utils';
 
-const setup = (initialState = {}) => {
-  const initStore = {
-    success: false,
-    guessedWords: [],
-    secretWord: '',
-  };
+const initStore = {
+  success: false,
+  guessedWords: [],
+  secretWord: '',
+};
 
+const setup = (initialState = {}) => {
   const store = mockStore({
     ...initStore,
     ...initialState,
@@ -57,7 +57,7 @@ describe('redux props', () => {
 
   test('getSecretWord runs on mount', () => {
     const getSecretWordMock = jest.fn();
-    const store = mockStore({});
+    const store = mockStore(initStore);
 
     const props = {
       getSecretWord: getSecretWordMock,

@@ -21,24 +21,26 @@ export const UnconnectedInput = ({ success, guessWord }) => {
     <div data-test="component-input">
       {
         success ? null : (
-          <form className="inline-form">
-            <input
-              value={word}
-              data-test="input-box"
-              className="mb-2 mx-sm-3"
-              type="text"
-              placeholder="Enter guess"
-              onInput={({ target }) => setWord(target.value)}
-            />
+          <form className="inline-form" style={{ maxWidth: '500px' }}>
+            <div className="input-group mb-2">
+              <input
+                value={word}
+                data-test="input-box"
+                className="form-control"
+                type="text"
+                placeholder="Enter guess"
+                onInput={({ target }) => setWord(target.value)}
+              />
 
-            <button
-              data-test="submit-button"
-              type="submit"
-              className="btn btn-primary mb-2"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
+              <button
+                data-test="submit-button"
+                type="submit"
+                className="btn btn-primary"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            </div>
           </form>
         )
       }
